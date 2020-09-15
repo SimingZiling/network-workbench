@@ -12,6 +12,7 @@
         <module>network-workbench-beans</module>
         <module>network-workbench-util</module>
         <module>network-workbench-servlet</module>
+        <module>network-workbench-example</module>
     </modules>
 
     <properties>
@@ -43,6 +44,13 @@
                 <artifactId>network-workbench-beans</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.yiming</groupId>
+                <artifactId>network-workbench-servlet</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.yiming</groupId>
                 <artifactId>network-workbench-util</artifactId>

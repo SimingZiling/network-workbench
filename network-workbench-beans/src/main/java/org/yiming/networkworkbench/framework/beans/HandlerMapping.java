@@ -22,7 +22,6 @@ public class HandlerMapping {
      * @param object bean对象
      */
     public void doInitHandlerMapping(Object object) {
-
         Class<?> clazz = object.getClass();
         // 判断类是否具有RequestMapping注解
         if(clazz.isAnnotationPresent(RequestMapping.class)){
