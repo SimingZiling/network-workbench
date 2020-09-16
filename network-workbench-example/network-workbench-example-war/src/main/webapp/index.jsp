@@ -1,5 +1,5 @@
-<！DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang =“zh_CN”>
 <head>
     <title>Hello World</title>
     <meta content =“text-html; charset = utf-8” />
