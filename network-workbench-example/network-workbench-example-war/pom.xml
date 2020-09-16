@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>network-workbench-example-war</artifactId>
-<!--    <packaging>war</packaging>-->
+<!--    此处可以打war包-->
     <packaging>jar</packaging>
 
     <name>network-workbench-example-war Maven Webapp</name>
