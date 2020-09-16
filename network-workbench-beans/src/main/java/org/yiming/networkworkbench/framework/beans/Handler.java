@@ -49,10 +49,11 @@ public class Handler {
                 if(!requestParam.value().equals("")){
                     String parameName = requestParam.value();
                     // TODO 参数类型未能判断
-                    if(request.getgetRequestParameter(parameName) == null){
+                    if(request.getRequestParameter(parameName) == null){
                         objects[i] = null;
                     }else {
-                        objects[i] = request.getgetRequestParameter(parameName)[0];
+                        // TODO 参数类型未能判断 目前返回为数组的固定值
+                        objects[i] = request.getRequestParameter(parameName)[0];
                     }
                 }else {
                     objects[i] = null;

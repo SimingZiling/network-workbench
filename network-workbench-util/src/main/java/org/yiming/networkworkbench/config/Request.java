@@ -9,7 +9,17 @@ import java.util.Map;
  */
 public class Request {
 
-    private Map<String,String[]> requestParameterMap = new HashMap<>();
+    private Map<String,String[]> requestParameterMap ;
+
+    private Map<String,String> requestHeaderMap ;
+
+    public Map<String, String> getRequestHeaderMap() {
+        return requestHeaderMap;
+    }
+
+    public void setRequestHeaderMap(Map<String, String> requestHeaderMap) {
+        this.requestHeaderMap = requestHeaderMap;
+    }
 
     public Map<String, String[]> getRequestParameterMap() {
         return requestParameterMap;
@@ -19,8 +29,12 @@ public class Request {
         this.requestParameterMap = requestParameterMap;
     }
 
-    public String[] getgetRequestParameter(String parameterName){
+    public String[] getRequestParameter(String parameterName){
         return this.requestParameterMap.get(parameterName);
+    }
+
+    public String getRequestHeader(String headerName){
+        return this.requestHeaderMap.get(headerName);
     }
 
 }

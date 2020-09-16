@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 请求分发
@@ -19,10 +22,23 @@ public class DispatcherServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
         // 获取上下文地址（项目名称）
         String contextPath = req.getContextPath();
         // 获取URL地址  先获取URI 然后通过上下文地址截取出URL 再讲多余的/ 去除
         String url = req.getRequestURI().replaceAll(contextPath,"").replaceAll("/+","/");
+        // 封装请求
+        Request request = new Request();
+        // 添加请求参数
+        request.setRequestParameterMap(req.getParameterMap());
+        Map<String,String> requestHeaderMap = new HashMap<String, String>();
+        Enumeration<String> headNames = req.getHeaderNames();
+        while (headNames.hasMoreElements()){
+            String headName = headNames.nextElement();
+            requestHeaderMap.put(headName,req.getHeader(headName));
+        }
+        // 添加请求头
+        request.setRequestHeaderMap(requestHeaderMap);
 
         // 通过HandlerMapping获取到对应的Handler
         Handler handler =  HandlerMapping.getHandler(url);
@@ -33,8 +49,8 @@ public class DispatcherServlet extends HttpServlet {
             resp.getWriter().write("404 找不到该页面！ ");
         }
         try {
-            Request request = new Request();
-            request.setRequestParameterMap(req.getParameterMap());
+//            Request request = new Request();
+//            request.setRequestParameterMap(req.getParameterMap());
             String jsonString = JSON.toJSONString(handler.performMethod(request));
             resp.setStatus(200);
             resp.setCharacterEncoding("UTF-8");
